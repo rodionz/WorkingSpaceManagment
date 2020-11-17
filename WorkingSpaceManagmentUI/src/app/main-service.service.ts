@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import { getLocaleDateFormat } from '@angular/common';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject, Subject } from 'rxjs';
 import {environment} from '../environments/environment';
 
 @Injectable({
@@ -10,6 +10,8 @@ import {environment} from '../environments/environment';
 export class MainServiceService {
 
   mainUrl: string;
+  companySelected$: BehaviorSubject<any> = new BehaviorSubject('');
+
 
   constructor(private http: HttpClient) {
       this.mainUrl = environment.localhost;
@@ -21,5 +23,9 @@ export class MainServiceService {
 
    getCompanies(): Observable<any>{
      return this.http.get(this.mainUrl + 'orders/getcompanies')
+   }
+
+   getPrevousOrdersForCompany(companyId: string): Observable<any>{
+     return this.http.get(this.mainUrl + 'orders/getordersByCompanie?companyId=' + companyId);
    }
 }

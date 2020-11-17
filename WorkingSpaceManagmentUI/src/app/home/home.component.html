@@ -39,14 +39,15 @@
 
   <!-- Resources -->
   <h2>Dashboard</h2>
-  <p>Here are some links to help you get started:</p>
+  <p *ngIf="selectedCompanyId" >Welcome to the {{selectedCompanyName}} work space booking system</p>
 
   <h4>Select Your Company</h4>
 <mat-form-field appearance="fill">
   <mat-label>Company name</mat-label>
-  <mat-select>
+  <mat-select [(value)]="selectedCompanyId"
+   (valueChange)="valueChanged($event)">
     <mat-option *ngFor="let companie of companies" [value]="companie.Id">
-      {{companie.CompanyName}}
+      {{companie.companyName.trim()}}
     </mat-option>
   </mat-select>
 </mat-form-field>

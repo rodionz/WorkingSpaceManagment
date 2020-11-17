@@ -9,6 +9,7 @@ import { PreviousBookingsComponent } from './previous-bookings/previous-bookings
 import { MakeNewBookingComponent } from './make-new-booking/make-new-booking.component';
 import {MatSelectModule} from '@angular/material/select';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     HttpClientModule,
     MatSelectModule,
-    NoopAnimationsModule
+    NoopAnimationsModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

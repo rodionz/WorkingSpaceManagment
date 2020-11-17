@@ -23,8 +23,12 @@ namespace HotChairsApp.BL
         public async Task<List<Order>> GetAllOrders() =>
            await _orders.Find(oreder => true).ToListAsync();
 
-        public async Task<List<Company>> GetAllCompanies() =>
-            await _companies.Find(company => true).ToListAsync();
+        public async Task<List<Order>> GettOrdersForCompany(string companyId) =>
+            await _orders.Find(order => order.CompanyId == companyId).ToListAsync();
+
+
+        public  List<Company> GetAllCompanies() =>
+            _companies.Find(company => true).ToList();
 
 
         public IEnumerable<Order> FindOrdersOfEmployee(string employeeId) =>

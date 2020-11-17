@@ -3,7 +3,7 @@
 export interface Company {
 
          Id : string;
-         CompanyName: string;
+         companyName: string;
          QuantityOfEmployees: number;
          QuantityOfWorkingSlots : number;
 }

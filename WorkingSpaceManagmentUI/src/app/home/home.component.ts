@@ -15,23 +15,29 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   listOfSubscriptions: Subscription[] = [];
   companies: Company[] = [];
+  selectedCompany: Company;
+  selectedCompanyId: any;
+  selectedCompanyName: string;
 
   constructor(private mainSrv: MainServiceService) { }
 
 
   ngOnInit(): void {
    this.listOfSubscriptions.push(
-     this.mainSrv.getData()
-    .subscribe(res => console.log(res)));
-
-   this.listOfSubscriptions.push(
       this.mainSrv.getCompanies()
       .subscribe((res: Company[]) => {
-        console.log("getCompanies");
-        console.log(res)
         this.companies = res;
       })
     );
+ }
+
+
+ valueChanged(val){
+   console.warn(val)
+   this.selectedCompany = this.companies.find(c => c.Id == val);
+   this.selectedCompanyName = this.selectedCompany.companyName;
+   debugger;
+   this.mainSrv.companySelected$.next(this.selectedCompany);
  }
 
  ngOnDestroy(): void {

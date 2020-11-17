@@ -16,21 +16,12 @@ namespace WorkingSpaceManagment.Api.Controllers
     public class OrdersController : ControllerBase
     {
 
-
-
         private readonly OrdersService _orderSrv;
 
         public OrdersController(OrdersService oServ) {
             _orderSrv = oServ;
         }
 
-
-        // GET: api/<OrdersController>
-        //[HttpGet]
-        //public IEnumerable<string> Get()
-        //{
-        //    return new string[] { "value1", "value2" };
-        //}
 
         [HttpGet("Start")]
         public async Task<IActionResult> Start()
@@ -39,41 +30,37 @@ namespace WorkingSpaceManagment.Api.Controllers
             return Ok(orders);
         }
 
-        [HttpGet("getcompanies")]
-        public async Task<IActionResult> GetCompanies()
+        [HttpGet("getordersByCompanie")]
+        public async Task<IActionResult> GetordersByCompanie(string companyId)
         {
-            List<Company> companies = await _orderSrv.GetAllCompanies();
+            List<Order> orders = await _orderSrv.GettOrdersForCompany(companyId);
+            return Ok(orders);
+        }
+
+        [HttpGet("getcompanies")]
+        public  IActionResult GetCompanies()
+        {
+            List<Company> companies = _orderSrv.GetAllCompanies();
             return Ok(companies);
         }
+
+        //public async Task<IActionResult> GetAvailiableSlots(string companyId, string dateFrom, string dateTwo) { 
+        //   List<WorkStation> freeWorkStation
+        //}
+
+
 
         public  IActionResult Get() {
             string message = "Server Satrted...";
             return Ok(message);
         }
 
-        // GET api/<OrdersController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
+        //// GET api/<OrdersController>/5
+        //[HttpGet("{id}")]
+        //public string Get(int id)
+        //{
+        //    return "value";
+        //}
 
-        // POST api/<OrdersController>
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
-        // PUT api/<OrdersController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<OrdersController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
     }
 }
