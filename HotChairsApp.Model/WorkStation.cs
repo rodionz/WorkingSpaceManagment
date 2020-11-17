@@ -8,7 +8,7 @@ using System.Text;
 
 namespace HotChairsApp.Model
 {
-   public class WorkSlot
+   public class WorkStation
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
@@ -18,6 +18,9 @@ namespace HotChairsApp.Model
         [BsonRepresentation(BsonType.String)]
         [BsonElement("status")]
         public AvailiablityStatus AvailiablityStatus { get; set; }
+
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string companyId { get; set; }
     }
 
 

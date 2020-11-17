@@ -32,9 +32,16 @@ namespace WorkingSpaceManagment.Api.Controllers
         //    return new string[] { "value1", "value2" };
         //}
 
-        public async Task<IActionResult> Get() {
+        [HttpGet("Start")]
+        public async Task<IActionResult> Start()
+        {
             List<Order> orders = await _orderSrv.GetAllOrders();
             return Ok(orders);
+        }
+
+        public async Task<IActionResult> Get() {
+            string message = "Server Satrted...";
+            return Ok(message);
         }
 
         // GET api/<OrdersController>/5
