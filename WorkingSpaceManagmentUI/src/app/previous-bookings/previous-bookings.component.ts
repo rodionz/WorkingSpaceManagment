@@ -20,7 +20,7 @@ export class PreviousBookingsComponent implements OnInit, OnDestroy {
 
   company:Company;
   dataSource :any;
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+  displayedColumns: string[] = ['workStationId', 'companyId', 'employeeId',  'startDate', 'endDate'];
 
   ngOnInit(): void {
 
@@ -34,7 +34,7 @@ export class PreviousBookingsComponent implements OnInit, OnDestroy {
     )
     .subscribe( res=> {
       console.log(res)
-     // this.dataSource = res;
+      this.dataSource = res;
     }
 
     )
