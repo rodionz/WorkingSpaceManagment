@@ -10,7 +10,8 @@ using System.Threading.Tasks;
 namespace WorkingSpaceManagment.Api.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    
+
     public class MainController : ControllerBase
 
     {

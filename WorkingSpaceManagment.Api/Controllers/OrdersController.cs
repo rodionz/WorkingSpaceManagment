@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using HotChairsApp.BL;
+using HotChairsApp.Model;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,15 +10,31 @@ using System.Threading.Tasks;
 
 namespace WorkingSpaceManagment.Api.Controllers
 {
-    [Route("api/[controller]")]
+    //[Route("[controller]")]
     [ApiController]
+    [Route("[controller]")]
     public class OrdersController : ControllerBase
     {
+
+
+
+        private readonly OrdersService _orderSrv;
+
+        public OrdersController(OrdersService oServ) {
+            _orderSrv = oServ;
+        }
+
+
         // GET: api/<OrdersController>
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
+        //[HttpGet]
+        //public IEnumerable<string> Get()
+        //{
+        //    return new string[] { "value1", "value2" };
+        //}
+
+        public async Task<IActionResult> Get() {
+            List<Order> orders = await _orderSrv.GetAllOrders();
+            return Ok(orders);
         }
 
         // GET api/<OrdersController>/5

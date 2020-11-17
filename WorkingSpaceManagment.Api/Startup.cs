@@ -32,13 +32,16 @@ namespace WorkingSpaceManagment.Api
         {
 
 
-            services.Configure<ConnectionConfigurations>(Configuration.GetSection("ConnectionConfigurations"));
+            services.Configure<ConnectionConfigurations>(Configuration.GetSection(nameof(ConnectionConfigurations)));
 
             services.AddSingleton<IConnectionConfigurations>(x => 
             x.GetRequiredService<IOptions<ConnectionConfigurations>>().Value);
 
 
             services.AddSingleton<MainService>();
+            services.AddSingleton<EmployeesService>();
+            services.AddSingleton<OrdersService>();
+            services.AddSingleton<WorkSlotsService>();
 
             services.AddControllers()
                 .AddNewtonsoftJson(options => options.UseMemberCasing());

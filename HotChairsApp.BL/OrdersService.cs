@@ -3,6 +3,7 @@ using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace HotChairsApp.BL
 {
@@ -16,6 +17,9 @@ namespace HotChairsApp.BL
             IMongoDatabase database = client.GetDatabase(settings.DatabaseName);
             _orders = database.GetCollection<Order>(settings.OrdersCollection);
         }
+
+        public async Task<List<Order>> GetAllOrders() =>
+           await _orders.Find(oreder => true).ToListAsync();
 
         public IEnumerable<Order> FindOrdersOfEmployee(string employeeId) =>
             _orders.Find(order => order.employeeId == employeeId).ToList();
