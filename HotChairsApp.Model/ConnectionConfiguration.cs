@@ -6,6 +6,7 @@ namespace HotChairsApp.Model
     {
         public string MainCollection { get; set; }
         public string ConnectionString { get; set; }
+        public string CompaniesCollection { get; set; }
         public string DatabaseName { get; set; }
         public string OrdersCollection { get; set; }
     }
@@ -15,6 +16,8 @@ namespace HotChairsApp.Model
     {
         string MainCollection { get; set; }
         string OrdersCollection { get; set; }
+
+        string CompaniesCollection { get; set; }
         string ConnectionString { get; set; }
         string DatabaseName { get; set; }
     }

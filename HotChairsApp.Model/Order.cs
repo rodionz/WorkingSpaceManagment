@@ -6,7 +6,7 @@ using System.Text;
 
 namespace HotChairsApp.Model
 {
-   public class Order : IModel
+   public class Order 
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]

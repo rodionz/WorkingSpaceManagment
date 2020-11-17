@@ -8,13 +8,17 @@ namespace HotChairsApp.BL
 {
     public class OrdersService
     {
-        private readonly IMongoCollection<Order> orders;
+        private readonly IMongoCollection<Order> _orders;
 
         public OrdersService(IConnectionConfigurations settings)
         {
             MongoClient client = new MongoClient(settings.ConnectionString);
             IMongoDatabase database = client.GetDatabase(settings.DatabaseName);
-            orders = database.GetCollection<Order>(settings.OrdersCollection);
+            _orders = database.GetCollection<Order>(settings.OrdersCollection);
         }
+
+        public IEnumerable<Order> FindOrdersOfEmployee(string employeeId) =>
+            _orders.Find(order => order.employeeId == employeeId).ToList();
+
     }
 }

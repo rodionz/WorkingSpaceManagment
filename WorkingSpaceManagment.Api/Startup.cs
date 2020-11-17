@@ -64,6 +64,9 @@ namespace WorkingSpaceManagment.Api
             {
                 endpoints.MapControllers();
             });
+
+            
+            app.UseCors(options => options.AllowAnyOrigin());
         }
     }
 }

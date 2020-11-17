@@ -6,7 +6,7 @@ using System.Text;
 
 namespace HotChairsApp.Model
 {
-    public  class Employee : IModel
+    public  class Employee 
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
