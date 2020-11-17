@@ -5,11 +5,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
+import { PreviousBookingsComponent } from './previous-bookings/previous-bookings.component';
+import { MakeNewBookingComponent } from './make-new-booking/make-new-booking.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    PreviousBookingsComponent,
+    MakeNewBookingComponent
   ],
   imports: [
     BrowserModule,

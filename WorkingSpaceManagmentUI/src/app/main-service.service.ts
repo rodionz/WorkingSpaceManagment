@@ -10,13 +10,12 @@ import {environment} from '../environments/environment';
 export class MainServiceService {
 
   mainUrl: string;
-  // tslint:disable-next-line:whitespace
+
   constructor(private http: HttpClient) {
       this.mainUrl = environment.localhost;
    }
 
    getData(): Observable<any>{
-     console.log(environment.localhost);
      return this.http.get(this.mainUrl + 'orders/start');
    }
 }
