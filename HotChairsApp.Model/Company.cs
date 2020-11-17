@@ -1,5 +1,6 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -13,11 +14,20 @@ namespace HotChairsApp.Model
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
 
-        public string CompanyName { get; set; }
 
+        [BsonElement("companyName")]
+        [JsonProperty("companyName")]
+        public string Name { get; set; }
+
+        [BsonElement("quantityOfWorkingSlots")]
+        [JsonProperty("quantityOfWorkingSlots")]
+        public int QuantityOfWorkingSlots { get; set; }
+
+        [BsonElement("quantityOfEmployees")]
+        [JsonProperty("quantityOfEmployees")]
         public int QuantityOfEmployees { get; set; }
 
-        public int QuantityOfWorkingSlots { get; set; }
+       
 
 
     }

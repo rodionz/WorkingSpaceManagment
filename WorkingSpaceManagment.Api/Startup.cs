@@ -44,8 +44,6 @@ namespace WorkingSpaceManagment.Api
             services.AddSingleton<IConnectionConfigurations>(x => 
             x.GetRequiredService<IOptions<ConnectionConfigurations>>().Value);
 
-
-            services.AddSingleton<MainService>();
             services.AddSingleton<EmployeesService>();
             services.AddSingleton<OrdersService>();
             services.AddSingleton<WorkSlotsService>();

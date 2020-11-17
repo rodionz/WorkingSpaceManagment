@@ -18,4 +18,8 @@ export class MainServiceService {
    getData(): Observable<any>{
      return this.http.get(this.mainUrl + 'orders/start');
    }
+
+   getCompanies(): Observable<any>{
+     return this.http.get(this.mainUrl + 'orders/getcompanies')
+   }
 }

@@ -39,7 +39,14 @@ namespace WorkingSpaceManagment.Api.Controllers
             return Ok(orders);
         }
 
-        public async Task<IActionResult> Get() {
+        [HttpGet("getcompanies")]
+        public async Task<IActionResult> GetCompanies()
+        {
+            List<Company> companies = await _orderSrv.GetAllCompanies();
+            return Ok(companies);
+        }
+
+        public  IActionResult Get() {
             string message = "Server Satrted...";
             return Ok(message);
         }

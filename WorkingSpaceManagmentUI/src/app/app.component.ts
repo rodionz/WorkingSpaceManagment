@@ -6,17 +6,14 @@ import { MainServiceService } from './main-service.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent  {
 
   constructor(private mainSrv: MainServiceService){
 
   }
 
-  
 
-  ngOnInit(): void {
-     this.mainSrv.getData()
-     .subscribe(res => console.log(res));
-  }
+
+
 
 }
