@@ -13,6 +13,8 @@ namespace HotChairsApp.Model
         public string Id { get; set; }
 
         public string FullName { get; set; }
+
+        [BsonRepresentation(BsonType.ObjectId)]
         public string CompanyId { get; set; }
     }
 }

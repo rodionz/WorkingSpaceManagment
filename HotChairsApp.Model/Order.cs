@@ -14,17 +14,15 @@ namespace HotChairsApp.Model
         public string Id { get; set; }
 
         [BsonDateTimeOptions(Kind = DateTimeKind.Local)]
-        public DateTime startDate { get; set; }
+        public DateTime StartDate { get; set; }
 
         [BsonDateTimeOptions(Kind = DateTimeKind.Local)]
-        public DateTime endDate { get; set; }
+        public DateTime EndDate { get; set; }
 
-        //[BsonElement("Name")]
-        //[JsonProperty("Name")]
-        public string employeeId { get; set; }
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string EmployeeId { get; set; }
 
-        //[BsonElement("Name")]
-        //[JsonProperty("Name")]
-        public string workStationId { get; set; }
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string WorkStationId { get; set; }
     }
 }

@@ -22,7 +22,7 @@ namespace HotChairsApp.BL
            await _orders.Find(oreder => true).ToListAsync();
 
         public IEnumerable<Order> FindOrdersOfEmployee(string employeeId) =>
-            _orders.Find(order => order.employeeId == employeeId).ToList();
+            _orders.Find(order => order.EmployeeId == employeeId).ToList();
 
     }
 }

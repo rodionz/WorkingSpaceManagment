@@ -61,11 +61,6 @@ namespace WorkingSpaceManagment.Api
         {
             app.UseCors("ApiCorsPolicy");
 
-
-       
-
-         
-
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -81,9 +76,6 @@ namespace WorkingSpaceManagment.Api
             {
                 endpoints.MapControllers();
             });
-
-
-            
 
         }
           

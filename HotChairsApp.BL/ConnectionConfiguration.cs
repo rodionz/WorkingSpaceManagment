@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace HotChairsApp.Model
+namespace HotChairsApp.BL
 {
     public class ConnectionConfigurations : IConnectionConfigurations
     {
