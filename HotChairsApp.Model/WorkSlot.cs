@@ -6,13 +6,10 @@ using System.Text;
 
 namespace HotChairsApp.Model
 {
-    public  class Employee : IModel
+   public class WorkSlot
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
-
-        public string FullName { get; set; }
-        public string CompanyId { get; set; }
     }
 }
