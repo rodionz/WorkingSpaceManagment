@@ -16,9 +16,12 @@ namespace WorkingSpaceManagment.Api.Controllers
     {
         private readonly EmployeesService _employeeSrv;
 
-        public ManagerController(EmployeesService eservice) {
+        private readonly WorkSlotsService _wsService;
+
+        public ManagerController(EmployeesService eservice, WorkSlotsService wservice) {
 
             _employeeSrv = eservice;
+            _wsService = wservice;
         }
 
         [HttpPost("AddEmployee")]
@@ -33,6 +36,11 @@ namespace WorkingSpaceManagment.Api.Controllers
 
             _employeeSrv.RemoveEmployee(id);
 
+            return Ok();
+        }
+
+        public IActionResult SetQuantityOfWorkingSlots(string companyId, int newQuantiy) {
+            _wsService.SetQuantityOfWorkingSlots(companyId, newQuantiy);
             return Ok();
         }
 

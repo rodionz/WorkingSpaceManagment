@@ -10,6 +10,10 @@ import { MakeNewBookingComponent } from './make-new-booking/make-new-booking.com
 import {MatSelectModule} from '@angular/material/select';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import {MatTableModule} from '@angular/material/table';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -24,7 +28,12 @@ import {MatTableModule} from '@angular/material/table';
     HttpClientModule,
     MatSelectModule,
     NoopAnimationsModule,
-    MatTableModule
+    MatTableModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatInputModule,
+    MatFormFieldModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -294,3 +294,7 @@ svg#clouds {
 .mat-option-text.mat-option-text {
   white-space: normal;
 }
+
+.card-container{
+  box-sizing: content-box !important;
+}
