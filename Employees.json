@@ -1,0 +1,17 @@
+[{
+  "_id": {
+    "$oid": "5fb3f8d686254e822b723d39"
+  },
+  "companyId": {
+    "$oid": "5fb3f7bd86254e822b723d37"
+  },
+  "fullName": "Steve Jobs"
+},{
+  "_id": {
+    "$oid": "5fb3f95886254e822b723d3b"
+  },
+  "companyId": {
+    "$oid": "5fb3f83386254e822b723d38"
+  },
+  "fullName": "Ilon Musk"
+}]
