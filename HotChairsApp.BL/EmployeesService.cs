@@ -29,8 +29,8 @@ namespace HotChairsApp.BL
             return newWorker;
         }
 
-        public void RemoveEmployee(Employee badWorker) =>
-            _employees.DeleteOne(e => e.Id == badWorker.Id);
+        public void RemoveEmployee( string badWorkerId) =>
+            _employees.DeleteOne(e => e.Id == badWorkerId);
             
     }
 }

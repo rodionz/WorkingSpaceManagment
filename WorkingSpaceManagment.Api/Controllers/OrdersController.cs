@@ -1,6 +1,7 @@
 ﻿using HotChairsApp.BL;
 using HotChairsApp.Model;
 using Microsoft.AspNetCore.Mvc;
+using MongoDB.Bson;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,9 +32,9 @@ namespace WorkingSpaceManagment.Api.Controllers
         }
 
         [HttpGet("getordersByCompanie")]
-        public async Task<IActionResult> GetordersByCompanie(string companyId)
+        public IActionResult GetordersByCompanie(string companyId)
         {
-            List<Order> orders = await _orderSrv.GettOrdersForCompany(companyId);
+            List<BroadOrder> orders =  _orderSrv.GettOrdersForCompany(companyId);
             return Ok(orders);
         }
 

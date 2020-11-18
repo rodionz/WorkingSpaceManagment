@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using HotChairsApp.BL;
+using HotChairsApp.Model;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +14,27 @@ namespace WorkingSpaceManagment.Api.Controllers
     [ApiController]
     public class ManagerController : ControllerBase
     {
-       
-  
+        private readonly EmployeesService _employeeSrv;
+
+        public ManagerController(EmployeesService eservice) {
+
+            _employeeSrv = eservice;
+        }
+
+        [HttpPost("AddEmployee")]
+        public IActionResult AddEmployeeToTheCompany([FromBody]Employee newEmployee) {
+
+            var result = _employeeSrv.AddEmployeeToCompany(newEmployee);
+
+            return Ok(result);
+        }
+
+        public IActionResult FireEmployee(string id) {
+
+            _employeeSrv.RemoveEmployee(id);
+
+            return Ok();
+        }
+
     }
 }
