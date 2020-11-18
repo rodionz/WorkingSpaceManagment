@@ -63,14 +63,30 @@ namespace HotChairsApp.BL
 
 
 
-        public List<WorkStation> GetAvailiableSlots(string companyId, string dateFrom, string dateTo) {
+        public List<WorkStation> GetAvailiableSlots(string companyId, string dateFrom, string dateTo)
+        {
 
             DateTime fromDate = DateTime.Parse(dateFrom);
             DateTime to = DateTime.Parse(dateTo);
 
-            _workSpaces.Find()
 
-            var query = from order in _orders.AsQueryable().Where(o => o.CompanyId == companyId).Where(o => (o.EndDate < DateTime.Now || fromDate.Date < o.StartDate))
+
+            //Fetch all work stations of the current company
+            List<WorkStation> workstations = _workSpaces.AsQueryable().ToList();/*.Where(o => o.companyId == companyId).ToList();*/
+
+            //fetch all future orders for the current company
+            List<Order> orders =  _orders.AsQueryable().Where(o => o.CompanyId == companyId).Where(o => o.EndDate < DateTime.Now).ToList();
+
+            for (int i = 0; i < orders.Count; i++) {
+
+                // filtering orders by dates, if cross-booking detected - remove item from availiably work slots
+                if (orders[i].StartDate > DateTime.Now && fromDate.Date > orders[i].StartDate && fromDate.Date < orders[i].EndDate.Date) {
+
+                    workstations.RemoveAll(s => s.Id == orders[i].WorkStationId);
+                }
+            }
+
+            return workstations;
         }
 
 

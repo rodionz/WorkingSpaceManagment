@@ -33,4 +33,8 @@ export class MainServiceService {
 
     return this.http.get(this.mainUrl + `orders/GetAvailiableSlots?companyId=${companyId}&dateFrom=${dateFrom}&dateTo=${dateTo}`);
    }
+
+   MakeBooking(companyId: string, dateFrom:string, dateTo:string, workStationId:string){
+    return this.http.get(this.mainUrl + `orders/GetAvailiableSlots?companyId=${companyId}&dateFrom=${dateFrom}&dateTo=${dateTo}&workStationId=${workStationId}`);
+   }
 }

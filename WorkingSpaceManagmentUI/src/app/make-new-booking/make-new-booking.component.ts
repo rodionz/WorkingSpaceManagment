@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators, NumberValueAccessor } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { MainServiceService } from '../main-service.service';
 import { Company } from '../Model/Company';
@@ -20,22 +20,24 @@ export class MakeNewBookingComponent implements OnInit, OnDestroy {
 
   listOfSubscriptions: Subscription[] = [];
   company: Company;
-
+  dataSource: any[];
+  displayedColumns: string[] = ['workStationId', 'companyName'];
+  selectedRowIndex: number = -1;
 
   datesForm: FormGroup = new FormGroup({
-    datefrom: new FormControl(''),
-    dateTo: new FormControl(''),
+    datefrom: new FormControl('', Validators.required),
+    dateTo: new FormControl('', Validators.required),
   })
   _
   ngOnInit(): void {
-    this.listOfSubscriptions.push(
+
       this.mainSrv.companySelected$
         .subscribe(res => {
-          console.log(res); 
           this.company = res;
+          console.log(this.company);
         }
 
-        ))
+        )
   }
 
   onFormSubmit() {
@@ -46,8 +48,22 @@ export class MakeNewBookingComponent implements OnInit, OnDestroy {
 
     this.listOfSubscriptions.push(
       this.mainSrv.getAvaliableWorkStations(this.company.Id, dateFrom, dateTo)
-        .subscribe()
+        .subscribe((res: any[])=>{
+          this.dataSource = res;
+        })
     )
+  }
+
+  highlight(row){
+    this.selectedRowIndex = row.id;
+  }
+
+  makeBooking(){
+    let dateFrom = this.datesForm.controls["datefrom"].value;
+    let dateTo = this.datesForm.controls["dateTo"].value;
+    let workStationId = this.dataSource[this.selectedRowIndex]["workStationId"]
+    this.mainSrv.MakeBooking(this.company.Id, dateFrom, dateTo, workStationId)
+    .subscribe()
   }
 
   ngOnDestroy(): void {

@@ -20,7 +20,9 @@ namespace HotChairsApp.Model
         public AvailiablityStatus AvailiablityStatus { get; set; }
 
         [BsonRepresentation(BsonType.ObjectId)]
-        public string companyId { get; set; }
+        [BsonElement("companyId")]
+        [JsonProperty("companyId")]
+        public string CompanyId { get; set; }
     }
 
 

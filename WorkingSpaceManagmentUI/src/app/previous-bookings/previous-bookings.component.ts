@@ -34,7 +34,6 @@ export class PreviousBookingsComponent implements OnInit, OnDestroy {
           })
         )
         .subscribe(res => {
-          console.log(res)
           this.dataSource = res;
         }
 

@@ -48,12 +48,9 @@ namespace WorkingSpaceManagment.Api.Controllers
         [HttpGet("GetAvailiableSlots")]
         public IActionResult GetAvailiableSlots(string companyId, string dateFrom, string dateTo)
         {
-            
-
-            return Ok();
-
-            List<WorkStation> freeWorkStation = _orderSrv.GetAvailiableSlots(companyId, dateFrom, dateTo);
-
+                  
+            List<WorkStation> freeWorkStations = _orderSrv.GetAvailiableSlots(companyId, dateFrom, dateTo);
+            return Ok(freeWorkStations);
         }
 
 

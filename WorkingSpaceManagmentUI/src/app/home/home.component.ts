@@ -33,10 +33,8 @@ export class HomeComponent implements OnInit, OnDestroy {
 
 
  valueChanged(val){
-   console.warn(val)
    this.selectedCompany = this.companies.find(c => c.Id == val);
    this.selectedCompanyName = this.selectedCompany.companyName;
-   debugger;
    this.mainSrv.companySelected$.next(this.selectedCompany);
  }
 
