@@ -1,0 +1,39 @@
+[{
+  "_id": {
+    "$oid": "5fb3be9d86254e822b723d34"
+  },
+  "startDate": {
+    "$date": "2020-01-01T10:00:00Z"
+  },
+  "endDate": {
+    "$date": "2020-01-01T15:00:00Z"
+  },
+  "employeeId": {
+    "$oid": "5fb3f8d686254e822b723d39"
+  },
+  "workStationId": {
+    "$oid": "5fb3f7bd86254e822b723d37"
+  },
+  "companyId": {
+    "$oid": "5fb3f7bd86254e822b723d37"
+  }
+},{
+  "_id": {
+    "$oid": "5fb3fc1c86254e822b723d43"
+  },
+  "employeeId": {
+    "$oid": "5fb3f95886254e822b723d3b"
+  },
+  "workStationId": {
+    "$oid": "5fb3fb5586254e822b723d41"
+  },
+  "startDate": {
+    "$date": "2020-01-02T13:00:00Z"
+  },
+  "endDate": {
+    "$date": "2020-01-02T18:00:00Z"
+  },
+  "companyId": {
+    "$oid": "5fb3f83386254e822b723d38"
+  }
+}]

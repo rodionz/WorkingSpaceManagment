@@ -1,0 +1,15 @@
+[{
+  "_id": {
+    "$oid": "5fb3f7bd86254e822b723d37"
+  },
+  "companyName": "ABC Software",
+  "quantityOfWorkingSlots": 10,
+  "quantityOfEmployees": 25
+},{
+  "_id": {
+    "$oid": "5fb3f83386254e822b723d38"
+  },
+  "companyName": "Zodic Software",
+  "quantityOfWorkingSlots": 5,
+  "quantityOfEmployees": 10
+}]

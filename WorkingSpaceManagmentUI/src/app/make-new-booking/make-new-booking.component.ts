@@ -31,7 +31,7 @@ export class MakeNewBookingComponent implements OnInit, OnDestroy {
     this.listOfSubscriptions.push(
       this.mainSrv.companySelected$
         .subscribe(res => {
-          console.log(res); A
+          console.log(res); 
           this.company = res;
         }
 

@@ -1,0 +1,14 @@
+[{
+  "_id": {
+    "$oid": "5fb3fb0486254e822b723d3f"
+  },
+  "companyId": {
+    "$oid": "5fb3f7bd86254e822b723d37"
+  },
+  "status": "Free"
+},{
+  "_id": {
+    "$oid": "5fb3fb5586254e822b723d41"
+  },
+  "status": "Free"
+}]
