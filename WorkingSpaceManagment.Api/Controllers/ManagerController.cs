@@ -32,6 +32,7 @@ namespace WorkingSpaceManagment.Api.Controllers
             return Ok(result);
         }
 
+        [HttpGet("FireEmployee")]
         public IActionResult FireEmployee(string id) {
 
             _employeeSrv.RemoveEmployee(id);
@@ -39,6 +40,7 @@ namespace WorkingSpaceManagment.Api.Controllers
             return Ok();
         }
 
+        [HttpGet("setQuantityOfWorkingSlots")]
         public IActionResult SetQuantityOfWorkingSlots(string companyId, int newQuantiy) {
             _wsService.SetQuantityOfWorkingSlots(companyId, newQuantiy);
             return Ok();

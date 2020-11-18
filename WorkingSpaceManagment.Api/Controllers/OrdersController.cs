@@ -45,9 +45,16 @@ namespace WorkingSpaceManagment.Api.Controllers
             return Ok(companies);
         }
 
-        //public async Task<IActionResult> GetAvailiableSlots(string companyId, string dateFrom, string dateTwo) { 
-        //   List<WorkStation> freeWorkStation
-        //}
+        [HttpGet("GetAvailiableSlots")]
+        public IActionResult GetAvailiableSlots(string companyId, string dateFrom, string dateTo)
+        {
+            
+
+            return Ok();
+
+            List<WorkStation> freeWorkStation = _orderSrv.GetAvailiableSlots(companyId, dateFrom, dateTo);
+
+        }
 
 
 
@@ -56,12 +63,7 @@ namespace WorkingSpaceManagment.Api.Controllers
             return Ok(message);
         }
 
-        //// GET api/<OrdersController>/5
-        //[HttpGet("{id}")]
-        //public string Get(int id)
-        //{
-        //    return "value";
-        //}
+
 
     }
 }

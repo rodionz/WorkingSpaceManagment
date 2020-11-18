@@ -1,7 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MatNativeDateModule } from '@angular/material/core';
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormControl, FormGroup } from '@angular/forms';
+import { Subscription } from 'rxjs';
+import { MainServiceService } from '../main-service.service';
+import { Company } from '../Model/Company';
 
 
 
@@ -10,21 +14,44 @@ import {MatFormFieldModule} from '@angular/material/form-field';
   templateUrl: './make-new-booking.component.html',
   styleUrls: ['./make-new-booking.component.css']
 })
-export class MakeNewBookingComponent implements OnInit {
+export class MakeNewBookingComponent implements OnInit, OnDestroy {
 
-  constructor() { }
+  constructor(private mainSrv: MainServiceService) { }
 
+  listOfSubscriptions: Subscription[] = [];
+  company: Company;
+
+
+  datesForm: FormGroup = new FormGroup({
+    datefrom: new FormControl(''),
+    dateTo: new FormControl(''),
+  })
+  _
   ngOnInit(): void {
+    this.listOfSubscriptions.push(
+      this.mainSrv.companySelected$
+        .subscribe(res => {
+          console.log(res); A
+          this.company = res;
+        }
+
+        ))
   }
 
-  endDateChanged(val){
-    console.log(val);
+  onFormSubmit() {
+    console.table(this.datesForm);
 
+    let dateFrom = this.datesForm.controls["datefrom"].value;
+    let dateTo = this.datesForm.controls["dateTo"].value;
+
+    this.listOfSubscriptions.push(
+      this.mainSrv.getAvaliableWorkStations(this.company.Id, dateFrom, dateTo)
+        .subscribe()
+    )
   }
 
-  startDateChanged(val){
-    console.log(val);
-
+  ngOnDestroy(): void {
+    this.listOfSubscriptions.forEach((sub) => sub.unsubscribe());
   }
 
 }

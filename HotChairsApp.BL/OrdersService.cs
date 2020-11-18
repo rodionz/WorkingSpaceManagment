@@ -18,6 +18,7 @@ namespace HotChairsApp.BL
         private readonly IMongoCollection<Order> _orders;
         private readonly IMongoCollection<Company> _companies;
         private readonly IMongoCollection<Employee> _employees;
+        private readonly IMongoCollection<WorkStation> _workSpaces;
 
         public OrdersService(IConnectionConfigurations settings)
         {
@@ -26,6 +27,7 @@ namespace HotChairsApp.BL
             _orders = database.GetCollection<Order>(settings.OrdersCollection);
             _companies = database.GetCollection<Company>(settings.CompaniesCollection);
             _employees = database.GetCollection<Employee>(settings.EmployeesCollection);
+            _workSpaces = database.GetCollection<WorkStation>(settings.WorkStationsCollection);
         }
 
         public async Task<List<Order>> GetAllOrders() =>
@@ -58,7 +60,19 @@ namespace HotChairsApp.BL
             return result;
 
         }
-        
+
+
+
+        public List<WorkStation> GetAvailiableSlots(string companyId, string dateFrom, string dateTo) {
+
+            DateTime fromDate = DateTime.Parse(dateFrom);
+            DateTime to = DateTime.Parse(dateTo);
+
+            _workSpaces.Find()
+
+            var query = from order in _orders.AsQueryable().Where(o => o.CompanyId == companyId).Where(o => (o.EndDate < DateTime.Now || fromDate.Date < o.StartDate))
+        }
+
 
 
         public  List<Company> GetAllCompanies() =>

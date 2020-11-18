@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import { getLocaleDateFormat } from '@angular/common';
 import { Observable, BehaviorSubject, Subject } from 'rxjs';
 import {environment} from '../environments/environment';
@@ -27,5 +27,10 @@ export class MainServiceService {
 
    getPrevousOrdersForCompany(companyId: string): Observable<any>{
      return this.http.get(this.mainUrl + 'orders/getordersByCompanie?companyId=' + companyId);
+   }
+
+   getAvaliableWorkStations(companyId: string, dateFrom:string, dateTo:string){
+
+    return this.http.get(this.mainUrl + `orders/GetAvailiableSlots?companyId=${companyId}&dateFrom=${dateFrom}&dateTo=${dateTo}`);
    }
 }
