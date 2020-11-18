@@ -53,7 +53,13 @@ namespace WorkingSpaceManagment.Api.Controllers
             return Ok(freeWorkStations);
         }
 
+        [HttpGet("makeBooking")]
+        public IActionResult MakeBooking(string companyId, string dateFrom, string dateTo, string workStationId)
+        {
 
+            _orderSrv.MakeBooking(companyId, dateFrom, dateTo, workStationId);
+            return Ok();
+        }
 
         public  IActionResult Get() {
             string message = "Server Satrted...";

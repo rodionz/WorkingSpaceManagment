@@ -89,6 +89,16 @@ namespace HotChairsApp.BL
             return workstations;
         }
 
+        public void MakeBooking(string companyId, string dateFrom, string dateTo, string workStationId) {
+
+            Order newBooking = new Order();
+            newBooking.StartDate = DateTime.Parse(dateFrom);
+            newBooking.EndDate = DateTime.Parse(dateTo);
+            newBooking.CompanyId = companyId;
+            newBooking.WorkStationId = workStationId;
+
+            _orders.InsertOne(newBooking);
+        }
 
 
         public  List<Company> GetAllCompanies() =>
